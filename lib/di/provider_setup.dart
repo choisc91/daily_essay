@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 
 Future<List<SingleChildWidget>> getProviders() async {
   final database = await openDatabase('essay_db', version: 1, onCreate: (db, version) async {
-    await db.execute('CREATE TABLE note (id INTEGER PRIMARY KEY AUTOINCREMENT, '
+    await db.execute('CREATE TABLE essay (id INTEGER PRIMARY KEY AUTOINCREMENT, '
         'title TEXT, content TEXT, path TEXT, color INTEGER, timestamp INTEGER)');
   });
 
