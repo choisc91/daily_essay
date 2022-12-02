@@ -1,6 +1,6 @@
 import 'package:daily_essay/domain/model/essay.dart';
 
-abstract class EssayRepository {
+abstract class DatabaseRepository {
   //
   Future<List<Essay>> getEssays();
 

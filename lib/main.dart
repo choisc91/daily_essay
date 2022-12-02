@@ -1,7 +1,17 @@
+import 'package:daily_essay/di/provider_setup.dart';
+import 'package:daily_essay/presentation/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final providers = await getProviders();
+  runApp(
+    MultiProvider(
+      providers: providers,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(),
+      home: HomeScreen(),
     );
   }
 }

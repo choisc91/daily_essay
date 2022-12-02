@@ -1,11 +1,11 @@
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:sqflite/sqflite.dart';
 
-class EssayDatabaseHelper {
+class DatabaseHelper {
   //
   Database database;
 
-  EssayDatabaseHelper(this.database);
+  DatabaseHelper(this.database);
 
   Future<Essay?> getNoteById(int id) async {
     final items = await database.query(

@@ -1,4 +1,5 @@
 import 'package:daily_essay/presentation/home/components/empty_screen.dart';
+import 'package:daily_essay/presentation/home/components/essay_item.dart';
 import 'package:daily_essay/presentation/home/home_state.dart';
 import 'package:daily_essay/presentation/home/home_view_model.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,17 @@ class HomeScreen extends StatelessWidget {
       return const EmptyScreen();
     } else {
       // todo add page view.
-      return Container();
+      return PageView(
+        controller: _pageCtrl,
+        scrollDirection: Axis.vertical,
+        children: state.essays.map((e) => EssayItem(item: e)).toList(),
+      );
     }
   }
 
   Widget _buildFab() {
     return FloatingActionButton(
+      child: const Icon(Icons.create, color: Colors.white),
       onPressed: () {
         // todo add essay.
       },

@@ -1,10 +1,10 @@
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:flutter/material.dart';
 
-class EssayScreen extends StatelessWidget {
+class EssayItem extends StatelessWidget {
   final Essay item;
 
-  const EssayScreen({
+  const EssayItem({
     Key? key,
     required this.item,
   }) : super(key: key);

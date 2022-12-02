@@ -1,12 +1,12 @@
-import 'package:daily_essay/data/data_souce/essay_database_helper.dart';
+import 'package:daily_essay/data/data_souce/database_helper.dart';
 import 'package:daily_essay/domain/model/essay.dart';
-import 'package:daily_essay/domain/repository/essay_repository.dart';
+import 'package:daily_essay/domain/repository/database_repository.dart';
 
-class EssayRepositoryImpl implements EssayRepository {
+class DatabaseRepositoryImpl implements DatabaseRepository {
   //
-  final EssayDatabaseHelper helper;
+  final DatabaseHelper helper;
 
-  EssayRepositoryImpl(this.helper);
+  DatabaseRepositoryImpl(this.helper);
 
   @override
   Future<void> deleteEssay(Essay item) async {

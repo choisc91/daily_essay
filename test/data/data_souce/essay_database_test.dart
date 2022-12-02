@@ -1,4 +1,4 @@
-import 'package:daily_essay/data/data_souce/essay_database_helper.dart';
+import 'package:daily_essay/data/data_souce/database_helper.dart';
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,7 +11,7 @@ void main() {
     await database.execute('CREATE TABLE essay (id INTEGER PRIMARY KEY AUTOINCREMENT, '
         'title TEXT, content TEXT, path TEXT, color INTEGER, timestamp INTEGER)');
 
-    final helper = EssayDatabaseHelper(database);
+    final helper = DatabaseHelper(database);
 
     // 데이터 삽입.
     await helper.insertEssay(
