@@ -13,6 +13,4 @@ class HomeViewModel with ChangeNotifier {
   );
 
   HomeState get state => _state;
-
-  
 }

@@ -9,7 +9,7 @@ class PictureRepositoryImpl implements PictureRepository {
   PictureRepositoryImpl(this.pickupPicture);
 
   @override
-  Future<XFile?> getCameraPicture() async {
+  Future<XFile?> getShootPicture() async {
     return await pickupPicture.getCameraPicture();
   }
 

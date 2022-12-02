@@ -8,10 +8,21 @@ class EmptyScreen extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Icon(Icons.no_sim, color: Colors.grey),
+          Icon(
+            Icons.no_sim,
+            color: Colors.grey,
+            size: 48.0,
+          ),
           SizedBox(height: 8.0),
-          Text('No data'),
+          Text(
+            'No data :(',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 16.0,
+            ),
+          ),
         ],
       ),
     );
