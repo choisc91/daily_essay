@@ -1,4 +1,5 @@
 import 'package:daily_essay/domain/repository/picture_repository.dart';
+import 'package:image_picker/image_picker.dart';
 
 class GetGalleryPictureUseCase {
   //
@@ -6,7 +7,8 @@ class GetGalleryPictureUseCase {
 
   GetGalleryPictureUseCase(this.repository);
 
-  Future<void> call() async {
-    await repository.getGalleryPicture();
+  Future<String?> call() async {
+    final XFile? result = await repository.getGalleryPicture();
+    return (result != null) ? result.path : null;
   }
 }
