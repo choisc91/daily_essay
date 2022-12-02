@@ -30,9 +30,15 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<EditViewModel>();
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       floatingActionButton: _buildFab(context, viewModel),
       body: _buildBody(viewModel),
@@ -40,64 +46,54 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   Widget _buildBody(EditViewModel viewModel) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.dstATop),
-          image: FileImage(
-            File(viewModel.state.path),
-          ),
-        ),
-      ),
-      child: const TextField(
-        maxLines: null,
-        style: TextStyle(
-          color: Colors.white,
-        ),
-        textAlign: TextAlign.center,
-        decoration: InputDecoration(
-          hintText: 'how\'s today',
-          hintStyle: TextStyle(color: Colors.grey),
-          border: InputBorder.none,
-        ),
-      ),
-    );
-
     return Stack(
       fit: StackFit.expand,
-      alignment: Alignment.center,
       children: [
-        if (viewModel.state.path.isNotEmpty)
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: FileImage(
-                  File(viewModel.state.path),
-                ),
-              ),
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          alignment: Alignment.center,
+          decoration: (viewModel.state.path.isNotEmpty)
+              ? BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.dstATop),
+                    image: FileImage(
+                      File(viewModel.state.path),
+                    ),
+                  ),
+                )
+              : null,
+          child: const TextField(
+            maxLines: null,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              hintText: 'how\'s today',
+              hintStyle: TextStyle(color: Colors.grey),
+              border: InputBorder.none,
             ),
           ),
-        TextField(
-          maxLines: null,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-          decoration: InputDecoration(
-            hintText: 'how\'s today',
-            hintStyle: TextStyle(color: Colors.grey),
-            border: InputBorder.none,
-          ),
         ),
-        // background.
-        AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: .0,
+        // todo, Positioned 를 넣지 않으면 위치를 못잡고 팽창해 버림. 더 나은 구조 발견시 변경 바람.
+        Positioned(
+          left: .0,
+          right: .0,
+          child: AppBar(
+            elevation: .0,
+            backgroundColor: Colors.transparent,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.check),
+                onPressed: () {
+                  // todo addEssay 에 인자 추가해야 할 것 같음.
+                  viewModel.onEvent(const EditEvent.addEssay());
+                },
+              )
+            ],
+          ),
         ),
       ],
     );
