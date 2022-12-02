@@ -7,5 +7,6 @@ part 'home_state.freezed.dart';
 abstract class HomeState with _$HomeState {
   factory HomeState({
     required List<Essay> essays,
+    // todo
   }) = _HomeState;
 }

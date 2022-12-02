@@ -1,3 +1,4 @@
+import 'package:daily_essay/presentation/edit/edit_screen.dart';
 import 'package:daily_essay/presentation/home/components/empty_screen.dart';
 import 'package:daily_essay/presentation/home/components/essay_item.dart';
 import 'package:daily_essay/presentation/home/home_state.dart';
@@ -15,10 +16,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.watch<HomeViewModel>();
     final state = viewModel.state;
-
     return Scaffold(
+      backgroundColor: Colors.black,
       body: _buildBody(state),
-      floatingActionButton: _buildFab(),
+      floatingActionButton: _buildFab(context),
     );
   }
 
@@ -26,7 +27,6 @@ class HomeScreen extends StatelessWidget {
     if (state.essays.isEmpty) {
       return const EmptyScreen();
     } else {
-      // todo add page view.
       return PageView(
         controller: _pageCtrl,
         scrollDirection: Axis.vertical,
@@ -35,11 +35,12 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildFab() {
+  Widget _buildFab(BuildContext context) {
     return FloatingActionButton(
-      child: const Icon(Icons.create, color: Colors.white),
+      backgroundColor: Colors.white,
+      child: const Icon(Icons.create, color: Colors.black),
       onPressed: () {
-        // todo add essay.
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const EditScreen()));
       },
     );
   }

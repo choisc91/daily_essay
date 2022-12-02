@@ -11,6 +11,7 @@ import 'package:daily_essay/domain/use_case/essay_use_cases.dart';
 import 'package:daily_essay/domain/use_case/picture/get_gallery_picture_use_case.dart';
 import 'package:daily_essay/domain/use_case/picture/get_shoot_picture_use_case.dart';
 import 'package:daily_essay/domain/use_case/picture_use_cases.dart';
+import 'package:daily_essay/presentation/edit/edit_view_model.dart';
 import 'package:daily_essay/presentation/home/home_view_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +38,7 @@ Future<List<SingleChildWidget>> getProviders() async {
   final pickupPicture = PickupPicture(ImagePicker());
   final pictureRepo = PictureRepositoryImpl(pickupPicture);
 
-  final pictureUsecases = PictureUseCases(
+  final pictureUseCases = PictureUseCases(
     getGalleryPicture: GetGalleryPictureUseCase(pictureRepo),
     getShootPicture: GetShootPictureUseCase(pictureRepo),
   );
@@ -45,8 +46,10 @@ Future<List<SingleChildWidget>> getProviders() async {
   // todo edit 뷰모델 작성 후 수정 요.
 
   final homeViewModel = HomeViewModel(essayUseCases);
+  final editViewModel = EditViewModel(pictureUseCases);
 
   return [
     ChangeNotifierProvider(create: (context) => homeViewModel),
+    ChangeNotifierProvider(create: (context) => editViewModel),
   ];
 }
