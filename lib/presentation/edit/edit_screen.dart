@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:daily_essay/domain/model/essay.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EditScreen extends StatefulWidget {
+  //
   final Essay? item;
 
   const EditScreen({
@@ -19,18 +21,25 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
+  //
   final _question = [
     'how\'s today',
   ];
 
+  final _contentsCtrl = TextEditingController();
+
+  StreamSubscription? _subscription;
+
   @override
   void initState() {
     super.initState();
-    // todo 인자로 들어온 에세이 null 체크 후, 널이 아닐 경우 데이터 삽입 과정.
+    _setUiEvent();
   }
 
   @override
   void dispose() {
+    _contentsCtrl.dispose();
+    _subscription?.cancel();
     super.dispose();
   }
 
@@ -146,5 +155,20 @@ class _EditScreenState extends State<EditScreen> {
         Navigator.of(context).pop(type);
       },
     );
+  }
+
+  void _setUiEvent() {
+    Future.microtask(() {
+      final viewModel = context.read<EditViewModel>();
+      _subscription = viewModel.eventStream.listen((event) {
+        event.when(
+          saveEssay: () => Navigator.of(context).pop(true),
+          showErrorMessage: (String message) {
+            final snackBar = SnackBar(content: Text(message));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+        );
+      });
+    });
   }
 }

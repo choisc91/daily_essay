@@ -39,8 +39,13 @@ class HomeScreen extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Colors.white,
       child: const Icon(Icons.create, color: Colors.black),
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const EditScreen()));
+      onPressed: () async {
+        final bool? isSave = await Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const EditScreen()));
+        if (isSave != null && isSave) {
+          // todo load essay.
+          // todo edit state path value clear.
+        }
       },
     );
   }
