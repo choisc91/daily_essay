@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:daily_essay/domain/model/pix_picture.dart';
+import 'package:daily_essay/presentation/download/download_event.dart';
+import 'package:daily_essay/presentation/download/download_view_model.dart';
 import 'package:daily_essay/presentation/search/components/preview_item.dart';
-import 'package:daily_essay/presentation/search/search_event.dart';
-import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,16 +23,32 @@ class DownloadScreen extends StatefulWidget {
 }
 
 class _DownloadScreenState extends State<DownloadScreen> {
+  StreamSubscription? _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _initEventStream();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _subscription?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<SearchViewModel>();
+    final viewModel = context.watch<DownloadViewModel>();
     final pageCtrl = PageController(initialPage: widget.index);
+    int currentIndex = widget.index;
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
           PageView(
             controller: pageCtrl,
+            onPageChanged: (int index) => currentIndex = index,
             children: widget.pictures.map((e) {
               return PreviewItem(picture: e);
             }).toList(),
@@ -46,14 +64,39 @@ class _DownloadScreenState extends State<DownloadScreen> {
                 IconButton(
                   icon: const Icon(Icons.download),
                   onPressed: () {
-                    viewModel.onEvent(SearchEvent.downloadPicture(pageCtrl.initialPage));
+                    viewModel.onEvent(DownloadEvent.downloadPicture(widget.pictures[currentIndex]));
                   },
                 )
               ],
             ),
           ),
+          if (viewModel.state.isLoading) _buildProgressBar(),
         ],
       ),
     );
+  }
+
+  Widget _buildProgressBar() {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(color: Colors.black45),
+      child: const CircularProgressIndicator(),
+    );
+  }
+
+  void _initEventStream() {
+    Future.microtask(() {
+      final viewModel = context.read<DownloadViewModel>();
+      _subscription = viewModel.eventCtrl.listen((event) {
+        event.when(
+          showMessage: (message) {
+            final snackBar = SnackBar(content: Text(message));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+        );
+      });
+    });
   }
 }

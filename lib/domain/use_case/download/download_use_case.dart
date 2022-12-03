@@ -1,7 +1,7 @@
-import 'package:daily_essay/domain/repository/search_repository.dart';
+import 'package:daily_essay/domain/repository/download_repository.dart';
 
 class DownloadUseCase {
-  final SearchRepository repository;
+  final DownloadRepository repository;
 
   DownloadUseCase(this.repository);
 

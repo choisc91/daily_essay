@@ -19,21 +19,18 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() clearState,
-    required TResult Function(int index) downloadPicture,
     required TResult Function(String query) searchPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clearState,
-    TResult? Function(int index)? downloadPicture,
     TResult? Function(String query)? searchPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clearState,
-    TResult Function(int index)? downloadPicture,
     TResult Function(String query)? searchPicture,
     required TResult orElse(),
   }) =>
@@ -41,21 +38,18 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ClearState value) clearState,
-    required TResult Function(DownloadPicture value) downloadPicture,
     required TResult Function(SearchPicture value) searchPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClearState value)? clearState,
-    TResult? Function(DownloadPicture value)? downloadPicture,
     TResult? Function(SearchPicture value)? searchPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClearState value)? clearState,
-    TResult Function(DownloadPicture value)? downloadPicture,
     TResult Function(SearchPicture value)? searchPicture,
     required TResult orElse(),
   }) =>
@@ -119,7 +113,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() clearState,
-    required TResult Function(int index) downloadPicture,
     required TResult Function(String query) searchPicture,
   }) {
     return clearState();
@@ -129,7 +122,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clearState,
-    TResult? Function(int index)? downloadPicture,
     TResult? Function(String query)? searchPicture,
   }) {
     return clearState?.call();
@@ -139,7 +131,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clearState,
-    TResult Function(int index)? downloadPicture,
     TResult Function(String query)? searchPicture,
     required TResult orElse(),
   }) {
@@ -153,7 +144,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ClearState value) clearState,
-    required TResult Function(DownloadPicture value) downloadPicture,
     required TResult Function(SearchPicture value) searchPicture,
   }) {
     return clearState(this);
@@ -163,7 +153,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClearState value)? clearState,
-    TResult? Function(DownloadPicture value)? downloadPicture,
     TResult? Function(SearchPicture value)? searchPicture,
   }) {
     return clearState?.call(this);
@@ -173,7 +162,6 @@ class _$ClearState implements ClearState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClearState value)? clearState,
-    TResult Function(DownloadPicture value)? downloadPicture,
     TResult Function(SearchPicture value)? searchPicture,
     required TResult orElse(),
   }) {
@@ -186,145 +174,6 @@ class _$ClearState implements ClearState {
 
 abstract class ClearState implements SearchEvent {
   const factory ClearState() = _$ClearState;
-}
-
-/// @nodoc
-abstract class _$$DownloadPictureCopyWith<$Res> {
-  factory _$$DownloadPictureCopyWith(
-          _$DownloadPicture value, $Res Function(_$DownloadPicture) then) =
-      __$$DownloadPictureCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int index});
-}
-
-/// @nodoc
-class __$$DownloadPictureCopyWithImpl<$Res>
-    extends _$SearchEventCopyWithImpl<$Res, _$DownloadPicture>
-    implements _$$DownloadPictureCopyWith<$Res> {
-  __$$DownloadPictureCopyWithImpl(
-      _$DownloadPicture _value, $Res Function(_$DownloadPicture) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = null,
-  }) {
-    return _then(_$DownloadPicture(
-      null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DownloadPicture implements DownloadPicture {
-  const _$DownloadPicture(this.index);
-
-  @override
-  final int index;
-
-  @override
-  String toString() {
-    return 'SearchEvent.downloadPicture(index: $index)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DownloadPicture &&
-            (identical(other.index, index) || other.index == index));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DownloadPictureCopyWith<_$DownloadPicture> get copyWith =>
-      __$$DownloadPictureCopyWithImpl<_$DownloadPicture>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() clearState,
-    required TResult Function(int index) downloadPicture,
-    required TResult Function(String query) searchPicture,
-  }) {
-    return downloadPicture(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clearState,
-    TResult? Function(int index)? downloadPicture,
-    TResult? Function(String query)? searchPicture,
-  }) {
-    return downloadPicture?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clearState,
-    TResult Function(int index)? downloadPicture,
-    TResult Function(String query)? searchPicture,
-    required TResult orElse(),
-  }) {
-    if (downloadPicture != null) {
-      return downloadPicture(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ClearState value) clearState,
-    required TResult Function(DownloadPicture value) downloadPicture,
-    required TResult Function(SearchPicture value) searchPicture,
-  }) {
-    return downloadPicture(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ClearState value)? clearState,
-    TResult? Function(DownloadPicture value)? downloadPicture,
-    TResult? Function(SearchPicture value)? searchPicture,
-  }) {
-    return downloadPicture?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ClearState value)? clearState,
-    TResult Function(DownloadPicture value)? downloadPicture,
-    TResult Function(SearchPicture value)? searchPicture,
-    required TResult orElse(),
-  }) {
-    if (downloadPicture != null) {
-      return downloadPicture(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DownloadPicture implements SearchEvent {
-  const factory DownloadPicture(final int index) = _$DownloadPicture;
-
-  int get index;
-  @JsonKey(ignore: true)
-  _$$DownloadPictureCopyWith<_$DownloadPicture> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -392,7 +241,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() clearState,
-    required TResult Function(int index) downloadPicture,
     required TResult Function(String query) searchPicture,
   }) {
     return searchPicture(query);
@@ -402,7 +250,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clearState,
-    TResult? Function(int index)? downloadPicture,
     TResult? Function(String query)? searchPicture,
   }) {
     return searchPicture?.call(query);
@@ -412,7 +259,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clearState,
-    TResult Function(int index)? downloadPicture,
     TResult Function(String query)? searchPicture,
     required TResult orElse(),
   }) {
@@ -426,7 +272,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ClearState value) clearState,
-    required TResult Function(DownloadPicture value) downloadPicture,
     required TResult Function(SearchPicture value) searchPicture,
   }) {
     return searchPicture(this);
@@ -436,7 +281,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ClearState value)? clearState,
-    TResult? Function(DownloadPicture value)? downloadPicture,
     TResult? Function(SearchPicture value)? searchPicture,
   }) {
     return searchPicture?.call(this);
@@ -446,7 +290,6 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ClearState value)? clearState,
-    TResult Function(DownloadPicture value)? downloadPicture,
     TResult Function(SearchPicture value)? searchPicture,
     required TResult orElse(),
   }) {

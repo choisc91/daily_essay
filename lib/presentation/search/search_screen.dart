@@ -1,7 +1,8 @@
 import 'dart:async';
 
+import 'package:daily_essay/presentation/home/components/empty_screen.dart';
 import 'package:daily_essay/presentation/search/components/preview_item.dart';
-import 'package:daily_essay/presentation/search/download_screen.dart';
+import 'package:daily_essay/presentation/download/download_screen.dart';
 import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
@@ -62,35 +63,39 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
           (state.isLoading)
-              ? const Center(
-                  child: CircularProgressIndicator(),
+              ? const Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 )
               : Expanded(
-                  child: GridView.builder(
-                    itemCount: state.pictures.length,
-                    padding: const EdgeInsets.all(8.0),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        child: PreviewItem(picture: state.pictures[index]),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DownloadScreen(
-                                index: index,
-                                pictures: viewModel.state.pictures,
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                  child: (viewModel.state.pictures.isNotEmpty)
+                      ? GridView.builder(
+                          itemCount: state.pictures.length,
+                          padding: const EdgeInsets.all(8.0),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return InkWell(
+                              child: PreviewItem(picture: state.pictures[index]),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DownloadScreen(
+                                      index: index,
+                                      pictures: viewModel.state.pictures,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        )
+                      : const EmptyScreen(),
                 ),
         ],
       ),

@@ -6,6 +6,7 @@ import 'package:daily_essay/presentation/search/search_state.dart';
 import 'package:daily_essay/presentation/search/search_ui_event.dart';
 import 'package:flutter/material.dart';
 
+// todo 문제점 있음, 같은 이벤트 컨트롤러를 두개를 구독중인 페이지가 생성 중이어서, 오류가 남 다운로드는 정상적으로 가동.
 class SearchViewModel with ChangeNotifier {
   final SearchUseCases _useCases;
 
@@ -23,22 +24,11 @@ class SearchViewModel with ChangeNotifier {
     event.when(
       searchPicture: _fetch,
       clearState: _clearState,
-      downloadPicture: _downloadPicture,
     );
   }
 
-  void _downloadPicture(int index) async {
-    final url = _state.pictures[index].largeImageURL;
-    final result = await _useCases.download(url);
-    if (result != null) {
-      _eventCtrl.add(const SearchUiEvent.showErrorMessage('Download success!'));
-    } else {
-      _eventCtrl.add(const SearchUiEvent.showErrorMessage('Download fail'));
-    }
-  }
-
   void _clearState() {
-    _state = _state.copyWith(pictures: []);
+    _state = _state.copyWith(pictures: [], isLoading: false);
     notifyListeners();
   }
 
