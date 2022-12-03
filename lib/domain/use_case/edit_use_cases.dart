@@ -1,11 +1,11 @@
-import 'package:daily_essay/domain/use_case/edit/get_gallery_picture_use_case.dart';
-import 'package:daily_essay/domain/use_case/edit/get_shoot_picture_use_case.dart';
+import 'package:daily_essay/domain/use_case/edit/get_gallery_photo_use_case.dart';
+import 'package:daily_essay/domain/use_case/edit/shot_photo_use_case.dart';
 import 'package:daily_essay/domain/use_case/edit/insert_essay_use_case.dart';
 import 'package:daily_essay/domain/use_case/edit/update_essay_use_case.dart';
 
 class EditUseCases {
-  final GetShootPictureUseCase getShootPicture;
-  final GetGalleryPictureUseCase getGalleryPicture;
+  final ShotPhotoUseCase getShootPicture;
+  final GetGalleryPhotoUseCase getGalleryPicture;
   final InsertEssayUseCase insertEssay;
   final UpdateEssayUseCase updateEssay;
 

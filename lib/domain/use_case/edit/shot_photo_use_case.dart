@@ -1,10 +1,10 @@
-import 'package:daily_essay/domain/repository/picture_repository.dart';
+import 'package:daily_essay/domain/repository/photo_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
-class GetShootPictureUseCase {
+class ShotPhotoUseCase {
   PictureRepository repository;
 
-  GetShootPictureUseCase(this.repository);
+  ShotPhotoUseCase(this.repository);
 
   Future<String?> call() async {
     final XFile? result = await repository.getShootPicture();

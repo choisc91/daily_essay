@@ -1,12 +1,12 @@
-import 'package:daily_essay/data/datasource/pickup_picture.dart';
-import 'package:daily_essay/domain/repository/picture_repository.dart';
+import 'package:daily_essay/data/datasource/pickup_photo.dart';
+import 'package:daily_essay/domain/repository/photo_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
-class PictureRepositoryImpl implements PictureRepository {
+class PhotoRepositoryImpl implements PictureRepository {
   //
-  final PickupPicture pickupPicture;
+  final PickupPhoto pickupPicture;
 
-  PictureRepositoryImpl(this.pickupPicture);
+  PhotoRepositoryImpl(this.pickupPicture);
 
   @override
   Future<XFile?> getShootPicture() async {
