@@ -1,3 +1,4 @@
+import 'package:daily_essay/domain/model/essay.dart';
 import 'package:daily_essay/domain/use_case/home_use_cases.dart';
 import 'package:daily_essay/presentation/home/home_event.dart';
 import 'package:daily_essay/presentation/home/home_state.dart';
@@ -20,13 +21,18 @@ class HomeViewModel with ChangeNotifier {
   void onEvent(HomeEvent event) {
     event.when(
       refreshEssay: _refreshEssay,
-      deleteEssay: () {},
+      deleteEssay: _deleteEssay,
     );
   }
 
-  void _refreshEssay() async {
+  Future<void> _refreshEssay() async {
     final essays = await useCases.getEssays();
     _state = _state.copyWith(essays: essays);
     notifyListeners();
+  }
+
+  Future<void> _deleteEssay(Essay item) async {
+    await useCases.deleteEssay(item);
+    await _refreshEssay();
   }
 }

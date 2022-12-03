@@ -19,19 +19,19 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshEssay,
-    required TResult Function() deleteEssay,
+    required TResult Function(Essay item) deleteEssay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshEssay,
-    TResult? Function()? deleteEssay,
+    TResult? Function(Essay item)? deleteEssay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshEssay,
-    TResult Function()? deleteEssay,
+    TResult Function(Essay item)? deleteEssay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +112,7 @@ class _$RefreshEssay implements RefreshEssay {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshEssay,
-    required TResult Function() deleteEssay,
+    required TResult Function(Essay item) deleteEssay,
   }) {
     return refreshEssay();
   }
@@ -121,7 +121,7 @@ class _$RefreshEssay implements RefreshEssay {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshEssay,
-    TResult? Function()? deleteEssay,
+    TResult? Function(Essay item)? deleteEssay,
   }) {
     return refreshEssay?.call();
   }
@@ -130,7 +130,7 @@ class _$RefreshEssay implements RefreshEssay {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshEssay,
-    TResult Function()? deleteEssay,
+    TResult Function(Essay item)? deleteEssay,
     required TResult orElse(),
   }) {
     if (refreshEssay != null) {
@@ -180,6 +180,10 @@ abstract class _$$DeleteEssayCopyWith<$Res> {
   factory _$$DeleteEssayCopyWith(
           _$DeleteEssay value, $Res Function(_$DeleteEssay) then) =
       __$$DeleteEssayCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Essay item});
+
+  $EssayCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -189,54 +193,86 @@ class __$$DeleteEssayCopyWithImpl<$Res>
   __$$DeleteEssayCopyWithImpl(
       _$DeleteEssay _value, $Res Function(_$DeleteEssay) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$DeleteEssay(
+      null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as Essay,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EssayCopyWith<$Res> get item {
+    return $EssayCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$DeleteEssay implements DeleteEssay {
-  const _$DeleteEssay();
+  const _$DeleteEssay(this.item);
+
+  @override
+  final Essay item;
 
   @override
   String toString() {
-    return 'HomeEvent.deleteEssay()';
+    return 'HomeEvent.deleteEssay(item: $item)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DeleteEssay);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteEssay &&
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteEssayCopyWith<_$DeleteEssay> get copyWith =>
+      __$$DeleteEssayCopyWithImpl<_$DeleteEssay>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshEssay,
-    required TResult Function() deleteEssay,
+    required TResult Function(Essay item) deleteEssay,
   }) {
-    return deleteEssay();
+    return deleteEssay(item);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshEssay,
-    TResult? Function()? deleteEssay,
+    TResult? Function(Essay item)? deleteEssay,
   }) {
-    return deleteEssay?.call();
+    return deleteEssay?.call(item);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshEssay,
-    TResult Function()? deleteEssay,
+    TResult Function(Essay item)? deleteEssay,
     required TResult orElse(),
   }) {
     if (deleteEssay != null) {
-      return deleteEssay();
+      return deleteEssay(item);
     }
     return orElse();
   }
@@ -274,5 +310,10 @@ class _$DeleteEssay implements DeleteEssay {
 }
 
 abstract class DeleteEssay implements HomeEvent {
-  const factory DeleteEssay() = _$DeleteEssay;
+  const factory DeleteEssay(final Essay item) = _$DeleteEssay;
+
+  Essay get item;
+  @JsonKey(ignore: true)
+  _$$DeleteEssayCopyWith<_$DeleteEssay> get copyWith =>
+      throw _privateConstructorUsedError;
 }

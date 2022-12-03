@@ -7,12 +7,15 @@ import 'package:intl/intl.dart';
 class EssayItem extends StatelessWidget {
   final Essay item;
 
-  final Function onTap;
+  final Function? onTap;
+
+  final Function? onDelete;
 
   const EssayItem({
     Key? key,
     required this.item,
     required this.onTap,
+    required this.onDelete,
   }) : super(key: key);
 
   // todo 삭제 기능.
@@ -49,11 +52,21 @@ class EssayItem extends StatelessWidget {
         Positioned(
           top: 32.0,
           right: 8.0,
-          child: Text(
-            format,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                format,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 2.0),
+              IconButton(
+                onPressed: () => onDelete?.call(),
+                icon: const Icon(Icons.delete, color: Colors.white),
+              ),
+            ],
           ),
         ),
       ],

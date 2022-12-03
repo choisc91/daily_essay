@@ -123,29 +123,45 @@ class _EditScreenState extends State<EditScreen> {
                 children: [
                   _buildSelectMenu(context, 'camera'),
                   const SizedBox(height: 8.0),
-                  _buildSelectMenu(context, 'gallery')
+                  _buildSelectMenu(context, 'gallery'),
+                  const SizedBox(height: 8.0),
+                  _buildSelectMenu(context, 'download'),
                 ],
               ),
             );
           },
         );
-        // todo 다이얼로그 띄어서 사진을 직접 촬영할 것인지 갤러리에서 가지고 올 것인지 선택 받는 구문 필요.
-        if (type == 'camera') {
-          viewModel.onEvent(const EditEvent.getShootPicture());
-        } else {
-          viewModel.onEvent(const EditEvent.getGalleryPicture());
+
+        switch (type) {
+          case 'camera':
+            viewModel.onEvent(const EditEvent.getShootPicture());
+            break;
+          case 'gallery':
+            viewModel.onEvent(const EditEvent.getGalleryPicture());
+            break;
+          case 'download':
+            break;
         }
       },
     );
   }
 
   Widget _buildSelectMenu(BuildContext context, String type) {
-    final icon = (type == 'camera') ? Icons.camera_alt : Icons.photo;
+    IconData iconData = Icons.install_mobile;
+    switch (type) {
+      case 'camera':
+        iconData = Icons.camera_alt;
+        break;
+      case 'gallery':
+        iconData = Icons.photo;
+        break;
+    }
+
     return FloatingActionButton.extended(
       backgroundColor: Colors.white,
       label: Row(
         children: [
-          Icon(icon, size: 24.0, color: Colors.black),
+          Icon(iconData, size: 24.0, color: Colors.black),
           const SizedBox(width: 4.0),
           Text('$type ?', style: const TextStyle(color: Colors.black)),
         ],

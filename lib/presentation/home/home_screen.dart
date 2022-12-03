@@ -20,26 +20,41 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeViewModel = context.watch<HomeViewModel>();
     final editViewModel = context.watch<EditViewModel>();
-    final state = homeViewModel.state;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: _buildBody(state),
+      body: _buildBody(context, homeViewModel),
       floatingActionButton: _buildFab(context, homeViewModel, editViewModel),
     );
   }
 
-  Widget _buildBody(HomeState state) {
+  Widget _buildBody(BuildContext context, HomeViewModel viewModel) {
+    final state = viewModel.state;
     if (state.essays.isEmpty) {
       return const EmptyScreen();
-    } else {
-      return PageView(
-        controller: _pageCtrl,
-        scrollDirection: Axis.vertical,
-        children: state.essays.map((e) {
-          return EssayItem(item: e, onTap: () => _onTapItem(e));
-        }).toList(),
-      );
     }
+
+    return PageView(
+      controller: _pageCtrl,
+      scrollDirection: Axis.vertical,
+      children: state.essays.map((e) {
+        return EssayItem(
+          item: e,
+          onTap: () => _onTapItem(e),
+          onDelete: () {
+            final snackBar = SnackBar(
+              content: const Text('Delete essay?'),
+              action: SnackBarAction(
+                label: 'confirm',
+                onPressed: () {
+                  viewModel.onEvent(HomeEvent.deleteEssay(e));
+                },
+              ),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+        );
+      }).toList(),
+    );
   }
 
   Widget _buildFab(BuildContext context, HomeViewModel homeViewModel, EditViewModel editViewModel) {
