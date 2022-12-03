@@ -1,7 +1,6 @@
-import 'dart:io';
-
-import 'package:daily_essay/domain/model/download_picture.dart';
+import 'package:daily_essay/domain/model/pix_picture.dart';
 import 'package:daily_essay/presentation/search/components/preview_item.dart';
+import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +8,7 @@ import 'package:provider/provider.dart';
 class DownloadScreen extends StatefulWidget {
   final int index;
 
-  final List<DownloadPicture> pictures;
+  final List<PixaPicture> pictures;
 
   const DownloadScreen({
     Key? key,
@@ -47,7 +46,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                 IconButton(
                   icon: const Icon(Icons.download),
                   onPressed: () {
-                    // todo 현재 인텍스의 아이템 가지고 와서 해당 아이템 다운로드.
+                    viewModel.onEvent(SearchEvent.downloadPicture(pageCtrl.initialPage));
                   },
                 )
               ],

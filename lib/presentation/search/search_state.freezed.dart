@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<DownloadPicture> get pictures => throw _privateConstructorUsedError;
+  List<PixaPicture> get pictures => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res, SearchState>;
   @useResult
-  $Res call({bool isLoading, List<DownloadPicture> pictures});
+  $Res call({bool isLoading, List<PixaPicture> pictures});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
       pictures: null == pictures
           ? _value.pictures
           : pictures // ignore: cast_nullable_to_non_nullable
-              as List<DownloadPicture>,
+              as List<PixaPicture>,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<DownloadPicture> pictures});
+  $Res call({bool isLoading, List<PixaPicture> pictures});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_SearchStateCopyWithImpl<$Res>
       null == pictures
           ? _value._pictures
           : pictures // ignore: cast_nullable_to_non_nullable
-              as List<DownloadPicture>,
+              as List<PixaPicture>,
     ));
   }
 }
@@ -103,14 +103,14 @@ class __$$_SearchStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchState implements _SearchState {
-  _$_SearchState(this.isLoading, final List<DownloadPicture> pictures)
+  _$_SearchState(this.isLoading, final List<PixaPicture> pictures)
       : _pictures = pictures;
 
   @override
   final bool isLoading;
-  final List<DownloadPicture> _pictures;
+  final List<PixaPicture> _pictures;
   @override
-  List<DownloadPicture> get pictures {
+  List<PixaPicture> get pictures {
     if (_pictures is EqualUnmodifiableListView) return _pictures;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pictures);
@@ -143,14 +143,13 @@ class _$_SearchState implements _SearchState {
 }
 
 abstract class _SearchState implements SearchState {
-  factory _SearchState(
-          final bool isLoading, final List<DownloadPicture> pictures) =
+  factory _SearchState(final bool isLoading, final List<PixaPicture> pictures) =
       _$_SearchState;
 
   @override
   bool get isLoading;
   @override
-  List<DownloadPicture> get pictures;
+  List<PixaPicture> get pictures;
   @override
   @JsonKey(ignore: true)
   _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>

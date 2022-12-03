@@ -1,10 +1,13 @@
-import 'package:daily_essay/domain/model/download_picture.dart';
+import 'package:daily_essay/domain/model/pix_picture.dart';
 import 'package:flutter/material.dart';
 
 class PreviewItem extends StatelessWidget {
-  final DownloadPicture picture;
+  final PixaPicture picture;
 
-  const PreviewItem({Key? key, required this.picture}) : super(key: key);
+  const PreviewItem({
+    Key? key,
+    required this.picture,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

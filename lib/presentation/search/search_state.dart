@@ -1,4 +1,4 @@
-import 'package:daily_essay/domain/model/download_picture.dart';
+import 'package:daily_essay/domain/model/pix_picture.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'search_state.freezed.dart';
@@ -7,6 +7,6 @@ part 'search_state.freezed.dart';
 class SearchState with _$SearchState {
   factory SearchState(
     bool isLoading,
-    List<DownloadPicture> pictures,
+    List<PixaPicture> pictures,
   ) = _SearchState;
 }

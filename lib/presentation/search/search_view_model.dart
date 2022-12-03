@@ -23,7 +23,18 @@ class SearchViewModel with ChangeNotifier {
     event.when(
       searchPicture: _fetch,
       clearState: _clearState,
+      downloadPicture: _downloadPicture,
     );
+  }
+
+  void _downloadPicture(int index) async {
+    final url = _state.pictures[index].largeImageURL;
+    final result = await _useCases.download(url);
+    if (result != null) {
+      _eventCtrl.add(const SearchUiEvent.showErrorMessage('Download success!'));
+    } else {
+      _eventCtrl.add(const SearchUiEvent.showErrorMessage('Download fail'));
+    }
   }
 
   void _clearState() {

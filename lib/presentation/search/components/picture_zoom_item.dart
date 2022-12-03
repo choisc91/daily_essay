@@ -1,8 +1,8 @@
-import 'package:daily_essay/domain/model/download_picture.dart';
+import 'package:daily_essay/domain/model/pix_picture.dart';
 import 'package:flutter/material.dart';
 
 class PictureItem extends StatelessWidget {
-  final DownloadPicture item;
+  final PixaPicture item;
 
   const PictureItem({
     Key? key,
