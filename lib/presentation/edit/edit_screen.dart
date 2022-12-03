@@ -76,7 +76,7 @@ class _EditScreenState extends State<EditScreen> {
             maxLines: null,
             style: const TextStyle(
               height: 2.0,
-              fontSize: 12.0,
+              fontSize: 16.0,
               color: Colors.white,
             ),
             textAlign: TextAlign.center,

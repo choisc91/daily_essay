@@ -38,30 +38,21 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: .0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.grey,
+        title: TextField(
+          maxLines: 1,
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.white),
+          decoration: const InputDecoration(
+            suffixIcon: Icon(Icons.search),
+          ),
+          onSubmitted: (String query) {
+            viewModel.onEvent(SearchEvent.searchPicture(query));
+          },
+        ),
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
-                suffixIcon: Icon(Icons.search),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 0.0),
-                ),
-              ),
-              onSubmitted: (String query) {
-                viewModel.onEvent(SearchEvent.searchPicture(query));
-              },
-            ),
-          ),
           (state.isLoading)
               ? const Expanded(
                   child: Center(
