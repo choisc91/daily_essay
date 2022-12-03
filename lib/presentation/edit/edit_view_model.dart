@@ -26,11 +26,11 @@ class EditViewModel with ChangeNotifier {
     event.when(
       getShootPicture: () async {
         final String? path = await useCases.getShootPicture();
-        _setPicture(path);
+        setPicture(path);
       },
       getGalleryPicture: () async {
         final String? path = await useCases.getGalleryPicture();
-        _setPicture(path);
+        setPicture(path);
       },
       addEssay: _addEssay,
     );
@@ -41,7 +41,7 @@ class EditViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void _setPicture(String? path) {
+  void setPicture(String? path) {
     if (path != null) {
       _state = _state.copyWith(path: path);
       notifyListeners();

@@ -21,11 +21,6 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-  //
-  final _question = [
-    'how\'s today',
-  ];
-
   final _essayCtrl = TextEditingController();
 
   StreamSubscription? _subscription;
@@ -76,7 +71,11 @@ class _EditScreenState extends State<EditScreen> {
           child: TextField(
             controller: _essayCtrl,
             maxLines: null,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(
+              height: 2.0,
+              fontSize: 12.0,
+              color: Colors.white,
+            ),
             textAlign: TextAlign.center,
             decoration: const InputDecoration(
               hintText: 'how\'s today',
@@ -175,6 +174,12 @@ class _EditScreenState extends State<EditScreen> {
   void _setUiEvent() {
     Future.microtask(() {
       final viewModel = context.read<EditViewModel>();
+      // edit & new.
+      if (widget.item != null) {
+        viewModel.setPicture(widget.item!.path);
+        _essayCtrl.text = widget.item!.essay;
+      }
+
       _subscription = viewModel.eventStream.listen((event) {
         event.when(
           saveEssay: () => Navigator.of(context).pop(true),

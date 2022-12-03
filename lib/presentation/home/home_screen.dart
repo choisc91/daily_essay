@@ -9,69 +9,64 @@ import 'package:daily_essay/presentation/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final PageController _pageCtrl = PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
     final homeViewModel = context.watch<HomeViewModel>();
     final editViewModel = context.watch<EditViewModel>();
+    final state = homeViewModel.state;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: _buildBody(context, homeViewModel),
-      floatingActionButton: _buildFab(context, homeViewModel, editViewModel),
+      body: (state.essays.isEmpty)
+          ? const EmptyScreen()
+          : PageView(
+              controller: _pageCtrl,
+              scrollDirection: Axis.vertical,
+              children: state.essays.map((e) {
+                return InkWell(
+                  onTap: () => _onTapItem(homeViewModel, editViewModel, item: e),
+                  child: EssayItem(
+                    item: e,
+                    onDelete: () {
+                      final snackBar = SnackBar(
+                        content: const Text('Delete essay?'),
+                        action: SnackBarAction(
+                          label: 'confirm',
+                          onPressed: () {
+                            homeViewModel.onEvent(HomeEvent.deleteEssay(e));
+                          },
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.create, color: Colors.black),
+        onPressed: () => _onTapItem(homeViewModel, editViewModel),
+      ),
     );
   }
 
-  Widget _buildBody(BuildContext context, HomeViewModel viewModel) {
-    final state = viewModel.state;
-    if (state.essays.isEmpty) {
-      return const EmptyScreen();
+  void _onTapItem(HomeViewModel homeViewModel, EditViewModel editViewModel, {Essay? item}) async {
+    final bool? isSave = await Navigator.push(context, MaterialPageRoute(builder: (context) => EditScreen(item: item)));
+    editViewModel.clearPath();
+    if (isSave != null && isSave) {
+      homeViewModel.onEvent(const HomeEvent.refreshEssay());
     }
-
-    return PageView(
-      controller: _pageCtrl,
-      scrollDirection: Axis.vertical,
-      children: state.essays.map((e) {
-        return EssayItem(
-          item: e,
-          onTap: () => _onTapItem(e),
-          onDelete: () {
-            final snackBar = SnackBar(
-              content: const Text('Delete essay?'),
-              action: SnackBarAction(
-                label: 'confirm',
-                onPressed: () {
-                  viewModel.onEvent(HomeEvent.deleteEssay(e));
-                },
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          },
-        );
-      }).toList(),
-    );
-  }
-
-  Widget _buildFab(BuildContext context, HomeViewModel homeViewModel, EditViewModel editViewModel) {
-    return FloatingActionButton(
-      backgroundColor: Colors.white,
-      child: const Icon(Icons.create, color: Colors.black),
-      onPressed: () async {
-        final bool? isSave = await Navigator.push(context, MaterialPageRoute(builder: (context) => const EditScreen()));
-        editViewModel.clearPath(); // 기존에 남아있던 데이터 삭제 코드.
-        if (isSave != null && isSave) {
-          homeViewModel.onEvent(const HomeEvent.refreshEssay());
-        }
-      },
-    );
-  }
-
-  void _onTapItem(Essay item) {
-    // todo 아이템 클릭 했을 시 처리.
   }
 }

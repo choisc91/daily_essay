@@ -7,14 +7,11 @@ import 'package:intl/intl.dart';
 class EssayItem extends StatelessWidget {
   final Essay item;
 
-  final Function? onTap;
-
   final Function? onDelete;
 
   const EssayItem({
     Key? key,
     required this.item,
-    required this.onTap,
     required this.onDelete,
   }) : super(key: key);
 
@@ -46,7 +43,11 @@ class EssayItem extends StatelessWidget {
             item.essay,
             textAlign: TextAlign.center,
             maxLines: null,
-            style: const TextStyle(color: Colors.white, height: 2.0),
+            style: const TextStyle(
+              height: 2.0,
+              fontSize: 12.0,
+              color: Colors.white,
+            ),
           ),
         ),
         Positioned(
