@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 class EssayItem extends StatelessWidget {
   final Essay item;
 
+  final Function onTap;
+
   const EssayItem({
     Key? key,
     required this.item,
+    required this.onTap,
   }) : super(key: key);
 
   @override

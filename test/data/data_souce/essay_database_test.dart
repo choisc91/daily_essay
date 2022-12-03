@@ -10,35 +10,5 @@ void main() {
     final database = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath);
     await database.execute('CREATE TABLE essay (id INTEGER PRIMARY KEY AUTOINCREMENT, '
         'title TEXT, content TEXT, path TEXT, color INTEGER, timestamp INTEGER)');
-
-    final helper = DatabaseHelper(database);
-
-    // 데이터 삽입.
-    await helper.insertEssay(
-      Essay(
-        title: 'title 1',
-        content: 'contents 1',
-        path: 'image path 1',
-        color: Colors.black.value,
-        timestamp: DateTime.now().millisecondsSinceEpoch,
-      ),
-    );
-    expect((await helper.getEssays()).length, 1);
-
-    final items = await helper.getEssays();
-
-    // 업데이트.
-    await helper.updateEssay(
-      items.first.copyWith(
-        title: 'fixed title 1',
-      ),
-    );
-    expect((await helper.getEssays()).first.title, 'fixed title 1');
-
-    // 데이터 삭제.
-    await helper.deleteEssay(items.first.copyWith(
-      title: 'fixed title 1',
-    ));
-    expect((await helper.getEssays()).length, 0);
   });
 }

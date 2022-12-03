@@ -26,7 +26,7 @@ class _EditScreenState extends State<EditScreen> {
     'how\'s today',
   ];
 
-  final _contentsCtrl = TextEditingController();
+  final _essayCtrl = TextEditingController();
 
   StreamSubscription? _subscription;
 
@@ -38,7 +38,7 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   void dispose() {
-    _contentsCtrl.dispose();
+    _essayCtrl.dispose();
     _subscription?.cancel();
     super.dispose();
   }
@@ -73,13 +73,12 @@ class _EditScreenState extends State<EditScreen> {
                   ),
                 )
               : null,
-          child: const TextField(
+          child: TextField(
+            controller: _essayCtrl,
             maxLines: null,
-            style: TextStyle(
-              color: Colors.white,
-            ),
+            style: const TextStyle(color: Colors.white),
             textAlign: TextAlign.center,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'how\'s today',
               hintStyle: TextStyle(color: Colors.grey),
               border: InputBorder.none,
@@ -97,8 +96,8 @@ class _EditScreenState extends State<EditScreen> {
               IconButton(
                 icon: const Icon(Icons.check),
                 onPressed: () {
-                  // todo addEssay 에 인자 추가해야 할 것 같음.
-                  viewModel.onEvent(const EditEvent.addEssay());
+                  final int? id = widget.item == null ? null : widget.item!.id;
+                  viewModel.onEvent(EditEvent.addEssay(id, _essayCtrl.text, viewModel.state.path));
                 },
               )
             ],

@@ -7,19 +7,15 @@ part of 'essay.dart';
 // **************************************************************************
 
 _$_Essay _$$_EssayFromJson(Map<String, dynamic> json) => _$_Essay(
-      title: json['title'] as String,
-      content: json['content'] as String,
+      essay: json['essay'] as String,
       path: json['path'] as String,
-      color: json['color'] as int,
       timestamp: json['timestamp'] as int,
       id: json['id'] as int?,
     );
 
 Map<String, dynamic> _$$_EssayToJson(_$_Essay instance) => <String, dynamic>{
-      'title': instance.title,
-      'content': instance.content,
+      'essay': instance.essay,
       'path': instance.path,
-      'color': instance.color,
       'timestamp': instance.timestamp,
       'id': instance.id,
     };

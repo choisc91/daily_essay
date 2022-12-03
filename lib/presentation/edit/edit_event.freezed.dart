@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EditEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() addEssay,
+    required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? addEssay,
+    TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addEssay,
+    TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
     required TResult orElse(),
@@ -84,6 +84,8 @@ abstract class _$$AddEssayCopyWith<$Res> {
   factory _$$AddEssayCopyWith(
           _$AddEssay value, $Res Function(_$AddEssay) then) =
       __$$AddEssayCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? id, String essay, String path});
 }
 
 /// @nodoc
@@ -92,57 +94,97 @@ class __$$AddEssayCopyWithImpl<$Res>
     implements _$$AddEssayCopyWith<$Res> {
   __$$AddEssayCopyWithImpl(_$AddEssay _value, $Res Function(_$AddEssay) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? essay = null,
+    Object? path = null,
+  }) {
+    return _then(_$AddEssay(
+      freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      null == essay
+          ? _value.essay
+          : essay // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddEssay implements AddEssay {
-  const _$AddEssay();
+  const _$AddEssay(this.id, this.essay, this.path);
+
+  @override
+  final int? id;
+  @override
+  final String essay;
+  @override
+  final String path;
 
   @override
   String toString() {
-    return 'EditEvent.addEssay()';
+    return 'EditEvent.addEssay(id: $id, essay: $essay, path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddEssay);
+        (other.runtimeType == runtimeType &&
+            other is _$AddEssay &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.essay, essay) || other.essay == essay) &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id, essay, path);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddEssayCopyWith<_$AddEssay> get copyWith =>
+      __$$AddEssayCopyWithImpl<_$AddEssay>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() addEssay,
+    required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
   }) {
-    return addEssay();
+    return addEssay(id, essay, path);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? addEssay,
+    TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
   }) {
-    return addEssay?.call();
+    return addEssay?.call(id, essay, path);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addEssay,
+    TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
     required TResult orElse(),
   }) {
     if (addEssay != null) {
-      return addEssay();
+      return addEssay(id, essay, path);
     }
     return orElse();
   }
@@ -183,7 +225,15 @@ class _$AddEssay implements AddEssay {
 }
 
 abstract class AddEssay implements EditEvent {
-  const factory AddEssay() = _$AddEssay;
+  const factory AddEssay(final int? id, final String essay, final String path) =
+      _$AddEssay;
+
+  int? get id;
+  String get essay;
+  String get path;
+  @JsonKey(ignore: true)
+  _$$AddEssayCopyWith<_$AddEssay> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -224,7 +274,7 @@ class _$GetShootPicture implements GetShootPicture {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() addEssay,
+    required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
   }) {
@@ -234,7 +284,7 @@ class _$GetShootPicture implements GetShootPicture {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? addEssay,
+    TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
   }) {
@@ -244,7 +294,7 @@ class _$GetShootPicture implements GetShootPicture {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addEssay,
+    TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
     required TResult orElse(),
@@ -332,7 +382,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() addEssay,
+    required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
   }) {
@@ -342,7 +392,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? addEssay,
+    TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
   }) {
@@ -352,7 +402,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? addEssay,
+    TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
     required TResult orElse(),

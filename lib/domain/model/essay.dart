@@ -7,10 +7,8 @@ part 'essay.g.dart';
 @Freezed()
 class Essay with _$Essay {
   factory Essay({
-    required String title,
-    required String content,
+    required String essay,
     required String path,
-    required int color,
     required int timestamp,
     int? id,
   }) = _Essay;

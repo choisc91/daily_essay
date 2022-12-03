@@ -20,10 +20,8 @@ Essay _$EssayFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Essay {
-  String get title => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
+  String get essay => throw _privateConstructorUsedError;
   String get path => throw _privateConstructorUsedError;
-  int get color => throw _privateConstructorUsedError;
   int get timestamp => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
 
@@ -37,13 +35,7 @@ abstract class $EssayCopyWith<$Res> {
   factory $EssayCopyWith(Essay value, $Res Function(Essay) then) =
       _$EssayCopyWithImpl<$Res, Essay>;
   @useResult
-  $Res call(
-      {String title,
-      String content,
-      String path,
-      int color,
-      int timestamp,
-      int? id});
+  $Res call({String essay, String path, int timestamp, int? id});
 }
 
 /// @nodoc
@@ -59,30 +51,20 @@ class _$EssayCopyWithImpl<$Res, $Val extends Essay>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? content = null,
+    Object? essay = null,
     Object? path = null,
-    Object? color = null,
     Object? timestamp = null,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      essay: null == essay
+          ? _value.essay
+          : essay // ignore: cast_nullable_to_non_nullable
               as String,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as int,
       timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
@@ -101,13 +83,7 @@ abstract class _$$_EssayCopyWith<$Res> implements $EssayCopyWith<$Res> {
       __$$_EssayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String title,
-      String content,
-      String path,
-      int color,
-      int timestamp,
-      int? id});
+  $Res call({String essay, String path, int timestamp, int? id});
 }
 
 /// @nodoc
@@ -119,30 +95,20 @@ class __$$_EssayCopyWithImpl<$Res> extends _$EssayCopyWithImpl<$Res, _$_Essay>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = null,
-    Object? content = null,
+    Object? essay = null,
     Object? path = null,
-    Object? color = null,
     Object? timestamp = null,
     Object? id = freezed,
   }) {
     return _then(_$_Essay(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      essay: null == essay
+          ? _value.essay
+          : essay // ignore: cast_nullable_to_non_nullable
               as String,
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as int,
       timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
@@ -159,10 +125,8 @@ class __$$_EssayCopyWithImpl<$Res> extends _$EssayCopyWithImpl<$Res, _$_Essay>
 @JsonSerializable()
 class _$_Essay implements _Essay {
   _$_Essay(
-      {required this.title,
-      required this.content,
+      {required this.essay,
       required this.path,
-      required this.color,
       required this.timestamp,
       this.id});
 
@@ -170,13 +134,9 @@ class _$_Essay implements _Essay {
       _$$_EssayFromJson(json);
 
   @override
-  final String title;
-  @override
-  final String content;
+  final String essay;
   @override
   final String path;
-  @override
-  final int color;
   @override
   final int timestamp;
   @override
@@ -184,7 +144,7 @@ class _$_Essay implements _Essay {
 
   @override
   String toString() {
-    return 'Essay(title: $title, content: $content, path: $path, color: $color, timestamp: $timestamp, id: $id)';
+    return 'Essay(essay: $essay, path: $path, timestamp: $timestamp, id: $id)';
   }
 
   @override
@@ -192,10 +152,8 @@ class _$_Essay implements _Essay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Essay &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.content, content) || other.content == content) &&
+            (identical(other.essay, essay) || other.essay == essay) &&
             (identical(other.path, path) || other.path == path) &&
-            (identical(other.color, color) || other.color == color) &&
             (identical(other.timestamp, timestamp) ||
                 other.timestamp == timestamp) &&
             (identical(other.id, id) || other.id == id));
@@ -203,8 +161,7 @@ class _$_Essay implements _Essay {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, content, path, color, timestamp, id);
+  int get hashCode => Object.hash(runtimeType, essay, path, timestamp, id);
 
   @JsonKey(ignore: true)
   @override
@@ -222,23 +179,17 @@ class _$_Essay implements _Essay {
 
 abstract class _Essay implements Essay {
   factory _Essay(
-      {required final String title,
-      required final String content,
+      {required final String essay,
       required final String path,
-      required final int color,
       required final int timestamp,
       final int? id}) = _$_Essay;
 
   factory _Essay.fromJson(Map<String, dynamic> json) = _$_Essay.fromJson;
 
   @override
-  String get title;
-  @override
-  String get content;
+  String get essay;
   @override
   String get path;
-  @override
-  int get color;
   @override
   int get timestamp;
   @override
