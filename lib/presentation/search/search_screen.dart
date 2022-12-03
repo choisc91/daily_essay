@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_downloader/image_downloader.dart';
 
-class DownloadScreen extends StatefulWidget {
-  const DownloadScreen({Key? key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
-  State<DownloadScreen> createState() => _DownloadScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _DownloadScreenState extends State<DownloadScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();

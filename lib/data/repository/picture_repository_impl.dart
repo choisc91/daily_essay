@@ -1,4 +1,4 @@
-import 'package:daily_essay/data/data_souce/pickup_picture.dart';
+import 'package:daily_essay/data/datasource/pickup_picture.dart';
 import 'package:daily_essay/domain/repository/picture_repository.dart';
 import 'package:image_picker/image_picker.dart';
 

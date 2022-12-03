@@ -1,4 +1,4 @@
-import 'package:daily_essay/data/data_souce/database_helper.dart';
+import 'package:daily_essay/data/datasource/database_helper.dart';
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:daily_essay/domain/repository/database_repository.dart';
 

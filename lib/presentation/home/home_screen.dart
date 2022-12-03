@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          content: const Text('Delete essay?'),
+          content: const Text('Delete essay :('),
           actions: [
             CupertinoDialogAction(
               onPressed: () => Navigator.of(context).pop(true),

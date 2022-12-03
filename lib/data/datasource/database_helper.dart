@@ -2,7 +2,6 @@ import 'package:daily_essay/domain/model/essay.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  //
   Database database;
 
   DatabaseHelper(this.database);

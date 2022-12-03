@@ -1,5 +1,5 @@
-import 'package:daily_essay/data/data_souce/database_helper.dart';
-import 'package:daily_essay/data/data_souce/pickup_picture.dart';
+import 'package:daily_essay/data/datasource/database_helper.dart';
+import 'package:daily_essay/data/datasource/pickup_picture.dart';
 import 'package:daily_essay/data/repository/database_repository_impl.dart';
 import 'package:daily_essay/data/repository/picture_repository_impl.dart';
 import 'package:daily_essay/domain/use_case/edit/get_gallery_picture_use_case.dart';

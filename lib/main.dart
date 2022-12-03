@@ -1,5 +1,4 @@
 import 'package:daily_essay/di/provider_setup.dart';
-import 'package:daily_essay/presentation/download/download_screen.dart';
 import 'package:daily_essay/presentation/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

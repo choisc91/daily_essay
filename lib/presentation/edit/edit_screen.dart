@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:daily_essay/presentation/edit/edit_event.dart';
 import 'package:daily_essay/presentation/edit/edit_view_model.dart';
+import 'package:daily_essay/presentation/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -139,6 +140,7 @@ class _EditScreenState extends State<EditScreen> {
             viewModel.onEvent(const EditEvent.getGalleryPicture());
             break;
           case 'download':
+            Navigator.push(this.context, MaterialPageRoute(builder: (context) => const SearchScreen()));
             break;
         }
       },
