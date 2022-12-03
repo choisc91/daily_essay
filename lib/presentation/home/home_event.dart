@@ -5,7 +5,6 @@ part 'home_event.freezed.dart';
 
 @Freezed()
 abstract class HomeEvent with _$HomeEvent {
-  //
   const factory HomeEvent.refreshEssay() = RefreshEssay;
 
   const factory HomeEvent.deleteEssay(Essay item) = DeleteEssay;

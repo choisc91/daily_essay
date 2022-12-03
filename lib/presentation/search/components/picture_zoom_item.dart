@@ -2,18 +2,23 @@ import 'package:daily_essay/domain/model/download_picture.dart';
 import 'package:flutter/material.dart';
 
 class PictureItem extends StatelessWidget {
-  final DownloadPicture picture;
+  final DownloadPicture item;
 
-  const PictureItem({Key? key, required this.picture}) : super(key: key);
+  const PictureItem({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
+      height: double.infinity,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage(picture.largeImageURL),
+          image: NetworkImage(item.largeImageURL),
         ),
       ),
     );

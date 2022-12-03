@@ -4,7 +4,7 @@ part 'search_event.freezed.dart';
 
 @Freezed()
 abstract class SearchEvent with _$SearchEvent {
-  const factory SearchEvent.searchPicture(String query) = SearchPicture;
-
   const factory SearchEvent.clearState() = ClearState;
+
+  const factory SearchEvent.searchPicture(String query) = SearchPicture;
 }

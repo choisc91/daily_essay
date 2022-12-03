@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:daily_essay/presentation/search/components/picture_item.dart';
+import 'package:daily_essay/presentation/search/components/preview_item.dart';
+import 'package:daily_essay/presentation/search/download_screen.dart';
 import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +75,20 @@ class _SearchScreenState extends State<SearchScreen> {
                       crossAxisSpacing: 10,
                     ),
                     itemBuilder: (BuildContext context, int index) {
-                      return PictureItem(picture: state.pictures[index]);
+                      return InkWell(
+                        child: PreviewItem(picture: state.pictures[index]),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DownloadScreen(
+                                index: index,
+                                pictures: viewModel.state.pictures,
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
                   ),
                 ),
