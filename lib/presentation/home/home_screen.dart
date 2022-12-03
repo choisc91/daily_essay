@@ -4,7 +4,6 @@ import 'package:daily_essay/presentation/edit/edit_view_model.dart';
 import 'package:daily_essay/presentation/home/components/empty_screen.dart';
 import 'package:daily_essay/presentation/home/components/essay_item.dart';
 import 'package:daily_essay/presentation/home/home_event.dart';
-import 'package:daily_essay/presentation/home/home_state.dart';
 import 'package:daily_essay/presentation/home/home_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

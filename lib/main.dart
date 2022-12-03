@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Daily essay',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const HomeScreen(),
       // home: const DownloadScreen(),

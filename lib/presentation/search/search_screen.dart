@@ -1,6 +1,7 @@
+import 'package:daily_essay/presentation/search/components/picture_item.dart';
+import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_downloader/image_downloader.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -13,32 +14,63 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    _downloadImage();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
-
-  // 정상 작동 확인.
-  void _downloadImage() async {
-    try {
-      const imageUrl =
-          'https://pixabay.com/get/g270b7815bff2b2b7dac74ff5dd34a72f7c641f58eab75bf7418a98a785e7142e40a26a9922be0f3ab93296c479bdd1281f052f8f040e6868fd731c84f1e38afd_1280.jpg%22';
-
-      var imageId = await ImageDownloader.downloadImage(imageUrl);
-      if (imageId == null) {
-        return;
-      }
-
-      // Below is a method of obtaining saved image information.
-      var fileName = await ImageDownloader.findName(imageId);
-      var path = await ImageDownloader.findPath(imageId);
-      var size = await ImageDownloader.findByteSize(imageId);
-      var mimeType = await ImageDownloader.findMimeType(imageId);
-    } on PlatformException catch (error) {
-      print(error);
-    }
+    final viewModel = context.watch<SearchViewModel>();
+    final state = viewModel.state;
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        elevation: .0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+                suffixIcon: Icon(Icons.search),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white, width: 0.0),
+                ),
+              ),
+              onSubmitted: (String query) {
+                // todo.
+              },
+            ),
+          ),
+          (state.isLoading)
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Expanded(
+                  child: GridView.builder(
+                    itemCount: state.pictures.length,
+                    padding: const EdgeInsets.all(8.0),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return PictureItem(picture: state.pictures[index]);
+                    },
+                  ),
+                ),
+        ],
+      ),
+    );
   }
 }
