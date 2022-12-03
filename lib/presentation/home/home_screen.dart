@@ -3,6 +3,7 @@ import 'package:daily_essay/presentation/edit/edit_screen.dart';
 import 'package:daily_essay/presentation/edit/edit_view_model.dart';
 import 'package:daily_essay/presentation/home/components/empty_screen.dart';
 import 'package:daily_essay/presentation/home/components/essay_item.dart';
+import 'package:daily_essay/presentation/home/home_event.dart';
 import 'package:daily_essay/presentation/home/home_state.dart';
 import 'package:daily_essay/presentation/home/home_view_model.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: _buildBody(state),
-      floatingActionButton: _buildFab(context, editViewModel),
+      floatingActionButton: _buildFab(context, homeViewModel, editViewModel),
     );
   }
 
@@ -41,15 +42,15 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildFab(BuildContext context, EditViewModel viewModel) {
+  Widget _buildFab(BuildContext context, HomeViewModel homeViewModel, EditViewModel editViewModel) {
     return FloatingActionButton(
       backgroundColor: Colors.white,
       child: const Icon(Icons.create, color: Colors.black),
       onPressed: () async {
         final bool? isSave = await Navigator.push(context, MaterialPageRoute(builder: (context) => const EditScreen()));
-        viewModel.clearPath(); // 기존에 남아있던 데이터 삭제 코드.
+        editViewModel.clearPath(); // 기존에 남아있던 데이터 삭제 코드.
         if (isSave != null && isSave) {
-          // todo load essay.
+          homeViewModel.onEvent(const HomeEvent.refreshEssay());
         }
       },
     );
