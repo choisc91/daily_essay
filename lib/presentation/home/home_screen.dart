@@ -6,6 +6,7 @@ import 'package:daily_essay/presentation/home/components/essay_item.dart';
 import 'package:daily_essay/presentation/home/home_event.dart';
 import 'package:daily_essay/presentation/home/home_state.dart';
 import 'package:daily_essay/presentation/home/home_view_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,18 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () => _onTapItem(homeViewModel, editViewModel, item: e),
                   child: EssayItem(
                     item: e,
-                    onDelete: () {
-                      final snackBar = SnackBar(
-                        content: const Text('Delete essay?'),
-                        action: SnackBarAction(
-                          label: 'confirm',
-                          onPressed: () {
-                            homeViewModel.onEvent(HomeEvent.deleteEssay(e));
-                          },
-                        ),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    },
+                    onDelete: () => _onTapDelete(homeViewModel, e),
                   ),
                 );
               }).toList(),
@@ -67,6 +57,31 @@ class _HomeScreenState extends State<HomeScreen> {
     editViewModel.clearPath();
     if (isSave != null && isSave) {
       homeViewModel.onEvent(const HomeEvent.refreshEssay());
+    }
+  }
+
+  void _onTapDelete(HomeViewModel viewModel, Essay item) async {
+    final isDelete = await showDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          content: const Text('Delete essay?'),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Confirm', style: TextStyle(color: Colors.redAccent)),
+            ),
+            CupertinoDialogAction(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (isDelete != null && isDelete) {
+      viewModel.onEvent(HomeEvent.deleteEssay(item));
     }
   }
 }
