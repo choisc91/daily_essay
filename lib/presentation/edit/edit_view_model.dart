@@ -33,10 +33,11 @@ class EditViewModel with ChangeNotifier {
         setPicture(path);
       },
       addEssay: _addEssay,
+      clearState: _clearPath,
     );
   }
 
-  void clearPath() {
+  void _clearPath() {
     _state = _state.copyWith(path: '');
     notifyListeners();
   }

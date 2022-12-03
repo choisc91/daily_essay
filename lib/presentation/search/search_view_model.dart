@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:daily_essay/data/datasource/result.dart';
-import 'package:daily_essay/domain/model/download_picture.dart';
 import 'package:daily_essay/domain/use_case/search_use_cases.dart';
 import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_state.dart';
@@ -11,7 +9,7 @@ import 'package:flutter/material.dart';
 class SearchViewModel with ChangeNotifier {
   final SearchUseCases _useCases;
 
-  final _eventCtrl = StreamController<SearchUiEvent>();
+  final _eventCtrl = StreamController<SearchUiEvent>.broadcast();
 
   get eventCtrl => _eventCtrl.stream;
 
@@ -23,11 +21,17 @@ class SearchViewModel with ChangeNotifier {
 
   void onEvent(SearchEvent event) {
     event.when(
-      searchPicture: fetch,
+      searchPicture: _fetch,
+      clearState: _clearState,
     );
   }
 
-  void fetch(String query) async {
+  void _clearState() {
+    _state = _state.copyWith(pictures: []);
+    notifyListeners();
+  }
+
+  void _fetch(String query) async {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 

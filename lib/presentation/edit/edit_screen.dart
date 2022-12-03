@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:daily_essay/domain/model/essay.dart';
 import 'package:daily_essay/presentation/edit/edit_event.dart';
 import 'package:daily_essay/presentation/edit/edit_view_model.dart';
+import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_screen.dart';
+import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -108,11 +110,12 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   Widget _buildFab(BuildContext context, EditViewModel viewModel) {
+    final searchViewModel = context.watch<SearchViewModel>();
     return FloatingActionButton(
       backgroundColor: Colors.white,
       child: const Icon(Icons.photo, color: Colors.black),
       onPressed: () async {
-        final String type = await showDialog(
+        final String? type = await showDialog(
           context: context,
           builder: (context) {
             return Dialog(
@@ -132,16 +135,19 @@ class _EditScreenState extends State<EditScreen> {
           },
         );
 
-        switch (type) {
-          case 'camera':
-            viewModel.onEvent(const EditEvent.getShootPicture());
-            break;
-          case 'gallery':
-            viewModel.onEvent(const EditEvent.getGalleryPicture());
-            break;
-          case 'download':
-            Navigator.push(this.context, MaterialPageRoute(builder: (context) => const SearchScreen()));
-            break;
+        if (type != null) {
+          switch (type) {
+            case 'camera':
+              viewModel.onEvent(const EditEvent.getShootPicture());
+              break;
+            case 'gallery':
+              viewModel.onEvent(const EditEvent.getGalleryPicture());
+              break;
+            case 'download':
+              await Navigator.push(this.context, MaterialPageRoute(builder: (context) => const SearchScreen()));
+              searchViewModel.onEvent(const SearchEvent.clearState());
+              break;
+          }
         }
       },
     );

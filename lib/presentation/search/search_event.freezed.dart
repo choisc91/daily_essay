@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SearchEvent {
-  String get query => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query) searchPicture,
+    required TResult Function() clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? searchPicture,
+    TResult? Function()? clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? searchPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchPicture value) searchPicture,
+    required TResult Function(ClearState value) clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchPicture value)? searchPicture,
+    TResult? Function(ClearState value)? clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchPicture value)? searchPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SearchEventCopyWith<SearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $SearchEventCopyWith<$Res> {
   factory $SearchEventCopyWith(
           SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res, SearchEvent>;
-  @useResult
-  $Res call({String query});
 }
 
 /// @nodoc
@@ -73,28 +72,13 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_value.copyWith(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SearchPictureCopyWith<$Res>
-    implements $SearchEventCopyWith<$Res> {
+abstract class _$$SearchPictureCopyWith<$Res> {
   factory _$$SearchPictureCopyWith(
           _$SearchPicture value, $Res Function(_$SearchPicture) then) =
       __$$SearchPictureCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String query});
 }
@@ -155,6 +139,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query) searchPicture,
+    required TResult Function() clearState,
   }) {
     return searchPicture(query);
   }
@@ -163,6 +148,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? searchPicture,
+    TResult? Function()? clearState,
   }) {
     return searchPicture?.call(query);
   }
@@ -171,6 +157,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? searchPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) {
     if (searchPicture != null) {
@@ -183,6 +170,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchPicture value) searchPicture,
+    required TResult Function(ClearState value) clearState,
   }) {
     return searchPicture(this);
   }
@@ -191,6 +179,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchPicture value)? searchPicture,
+    TResult? Function(ClearState value)? clearState,
   }) {
     return searchPicture?.call(this);
   }
@@ -199,6 +188,7 @@ class _$SearchPicture implements SearchPicture {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchPicture value)? searchPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) {
     if (searchPicture != null) {
@@ -211,10 +201,110 @@ class _$SearchPicture implements SearchPicture {
 abstract class SearchPicture implements SearchEvent {
   const factory SearchPicture(final String query) = _$SearchPicture;
 
-  @override
   String get query;
-  @override
   @JsonKey(ignore: true)
   _$$SearchPictureCopyWith<_$SearchPicture> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearStateCopyWith<$Res> {
+  factory _$$ClearStateCopyWith(
+          _$ClearState value, $Res Function(_$ClearState) then) =
+      __$$ClearStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearStateCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$ClearState>
+    implements _$$ClearStateCopyWith<$Res> {
+  __$$ClearStateCopyWithImpl(
+      _$ClearState _value, $Res Function(_$ClearState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearState implements ClearState {
+  const _$ClearState();
+
+  @override
+  String toString() {
+    return 'SearchEvent.clearState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query) searchPicture,
+    required TResult Function() clearState,
+  }) {
+    return clearState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query)? searchPicture,
+    TResult? Function()? clearState,
+  }) {
+    return clearState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query)? searchPicture,
+    TResult Function()? clearState,
+    required TResult orElse(),
+  }) {
+    if (clearState != null) {
+      return clearState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SearchPicture value) searchPicture,
+    required TResult Function(ClearState value) clearState,
+  }) {
+    return clearState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SearchPicture value)? searchPicture,
+    TResult? Function(ClearState value)? clearState,
+  }) {
+    return clearState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SearchPicture value)? searchPicture,
+    TResult Function(ClearState value)? clearState,
+    required TResult orElse(),
+  }) {
+    if (clearState != null) {
+      return clearState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearState implements SearchEvent {
+  const factory ClearState() = _$ClearState;
 }

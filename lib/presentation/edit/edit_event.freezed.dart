@@ -21,6 +21,7 @@ mixin _$EditEvent {
     required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
+    required TResult Function() clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$EditEvent {
     TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
+    TResult? Function()? clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$EditEvent {
     TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$EditEvent {
     required TResult Function(AddEssay value) addEssay,
     required TResult Function(GetShootPicture value) getShootPicture,
     required TResult Function(GetGalleryPicture value) getGalleryPicture,
+    required TResult Function(ClearState value) clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$EditEvent {
     TResult? Function(AddEssay value)? addEssay,
     TResult? Function(GetShootPicture value)? getShootPicture,
     TResult? Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult? Function(ClearState value)? clearState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$EditEvent {
     TResult Function(AddEssay value)? addEssay,
     TResult Function(GetShootPicture value)? getShootPicture,
     TResult Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,6 +167,7 @@ class _$AddEssay implements AddEssay {
     required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
+    required TResult Function() clearState,
   }) {
     return addEssay(id, essay, path);
   }
@@ -171,6 +178,7 @@ class _$AddEssay implements AddEssay {
     TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
+    TResult? Function()? clearState,
   }) {
     return addEssay?.call(id, essay, path);
   }
@@ -181,6 +189,7 @@ class _$AddEssay implements AddEssay {
     TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) {
     if (addEssay != null) {
@@ -195,6 +204,7 @@ class _$AddEssay implements AddEssay {
     required TResult Function(AddEssay value) addEssay,
     required TResult Function(GetShootPicture value) getShootPicture,
     required TResult Function(GetGalleryPicture value) getGalleryPicture,
+    required TResult Function(ClearState value) clearState,
   }) {
     return addEssay(this);
   }
@@ -205,6 +215,7 @@ class _$AddEssay implements AddEssay {
     TResult? Function(AddEssay value)? addEssay,
     TResult? Function(GetShootPicture value)? getShootPicture,
     TResult? Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult? Function(ClearState value)? clearState,
   }) {
     return addEssay?.call(this);
   }
@@ -215,6 +226,7 @@ class _$AddEssay implements AddEssay {
     TResult Function(AddEssay value)? addEssay,
     TResult Function(GetShootPicture value)? getShootPicture,
     TResult Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) {
     if (addEssay != null) {
@@ -277,6 +289,7 @@ class _$GetShootPicture implements GetShootPicture {
     required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
+    required TResult Function() clearState,
   }) {
     return getShootPicture();
   }
@@ -287,6 +300,7 @@ class _$GetShootPicture implements GetShootPicture {
     TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
+    TResult? Function()? clearState,
   }) {
     return getShootPicture?.call();
   }
@@ -297,6 +311,7 @@ class _$GetShootPicture implements GetShootPicture {
     TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) {
     if (getShootPicture != null) {
@@ -311,6 +326,7 @@ class _$GetShootPicture implements GetShootPicture {
     required TResult Function(AddEssay value) addEssay,
     required TResult Function(GetShootPicture value) getShootPicture,
     required TResult Function(GetGalleryPicture value) getGalleryPicture,
+    required TResult Function(ClearState value) clearState,
   }) {
     return getShootPicture(this);
   }
@@ -321,6 +337,7 @@ class _$GetShootPicture implements GetShootPicture {
     TResult? Function(AddEssay value)? addEssay,
     TResult? Function(GetShootPicture value)? getShootPicture,
     TResult? Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult? Function(ClearState value)? clearState,
   }) {
     return getShootPicture?.call(this);
   }
@@ -331,6 +348,7 @@ class _$GetShootPicture implements GetShootPicture {
     TResult Function(AddEssay value)? addEssay,
     TResult Function(GetShootPicture value)? getShootPicture,
     TResult Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) {
     if (getShootPicture != null) {
@@ -385,6 +403,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     required TResult Function(int? id, String essay, String path) addEssay,
     required TResult Function() getShootPicture,
     required TResult Function() getGalleryPicture,
+    required TResult Function() clearState,
   }) {
     return getGalleryPicture();
   }
@@ -395,6 +414,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     TResult? Function(int? id, String essay, String path)? addEssay,
     TResult? Function()? getShootPicture,
     TResult? Function()? getGalleryPicture,
+    TResult? Function()? clearState,
   }) {
     return getGalleryPicture?.call();
   }
@@ -405,6 +425,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     TResult Function(int? id, String essay, String path)? addEssay,
     TResult Function()? getShootPicture,
     TResult Function()? getGalleryPicture,
+    TResult Function()? clearState,
     required TResult orElse(),
   }) {
     if (getGalleryPicture != null) {
@@ -419,6 +440,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     required TResult Function(AddEssay value) addEssay,
     required TResult Function(GetShootPicture value) getShootPicture,
     required TResult Function(GetGalleryPicture value) getGalleryPicture,
+    required TResult Function(ClearState value) clearState,
   }) {
     return getGalleryPicture(this);
   }
@@ -429,6 +451,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     TResult? Function(AddEssay value)? addEssay,
     TResult? Function(GetShootPicture value)? getShootPicture,
     TResult? Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult? Function(ClearState value)? clearState,
   }) {
     return getGalleryPicture?.call(this);
   }
@@ -439,6 +462,7 @@ class _$GetGalleryPicture implements GetGalleryPicture {
     TResult Function(AddEssay value)? addEssay,
     TResult Function(GetShootPicture value)? getShootPicture,
     TResult Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult Function(ClearState value)? clearState,
     required TResult orElse(),
   }) {
     if (getGalleryPicture != null) {
@@ -450,4 +474,118 @@ class _$GetGalleryPicture implements GetGalleryPicture {
 
 abstract class GetGalleryPicture implements EditEvent {
   const factory GetGalleryPicture() = _$GetGalleryPicture;
+}
+
+/// @nodoc
+abstract class _$$ClearStateCopyWith<$Res> {
+  factory _$$ClearStateCopyWith(
+          _$ClearState value, $Res Function(_$ClearState) then) =
+      __$$ClearStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearStateCopyWithImpl<$Res>
+    extends _$EditEventCopyWithImpl<$Res, _$ClearState>
+    implements _$$ClearStateCopyWith<$Res> {
+  __$$ClearStateCopyWithImpl(
+      _$ClearState _value, $Res Function(_$ClearState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearState implements ClearState {
+  const _$ClearState();
+
+  @override
+  String toString() {
+    return 'EditEvent.clearState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? id, String essay, String path) addEssay,
+    required TResult Function() getShootPicture,
+    required TResult Function() getGalleryPicture,
+    required TResult Function() clearState,
+  }) {
+    return clearState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? id, String essay, String path)? addEssay,
+    TResult? Function()? getShootPicture,
+    TResult? Function()? getGalleryPicture,
+    TResult? Function()? clearState,
+  }) {
+    return clearState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? id, String essay, String path)? addEssay,
+    TResult Function()? getShootPicture,
+    TResult Function()? getGalleryPicture,
+    TResult Function()? clearState,
+    required TResult orElse(),
+  }) {
+    if (clearState != null) {
+      return clearState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddEssay value) addEssay,
+    required TResult Function(GetShootPicture value) getShootPicture,
+    required TResult Function(GetGalleryPicture value) getGalleryPicture,
+    required TResult Function(ClearState value) clearState,
+  }) {
+    return clearState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddEssay value)? addEssay,
+    TResult? Function(GetShootPicture value)? getShootPicture,
+    TResult? Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult? Function(ClearState value)? clearState,
+  }) {
+    return clearState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddEssay value)? addEssay,
+    TResult Function(GetShootPicture value)? getShootPicture,
+    TResult Function(GetGalleryPicture value)? getGalleryPicture,
+    TResult Function(ClearState value)? clearState,
+    required TResult orElse(),
+  }) {
+    if (clearState != null) {
+      return clearState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearState implements EditEvent {
+  const factory ClearState() = _$ClearState;
 }

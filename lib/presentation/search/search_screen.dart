@@ -19,7 +19,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    _setUiEvent();
+    _initEventStream();
   }
 
   @override
@@ -83,7 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  void _setUiEvent() {
+  void _initEventStream() {
     Future.microtask(() {
       final viewModel = context.read<SearchViewModel>();
       _subscription = viewModel.eventCtrl.listen((event) {

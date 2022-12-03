@@ -1,4 +1,5 @@
 import 'package:daily_essay/domain/model/essay.dart';
+import 'package:daily_essay/presentation/edit/edit_event.dart';
 import 'package:daily_essay/presentation/edit/edit_screen.dart';
 import 'package:daily_essay/presentation/edit/edit_view_model.dart';
 import 'package:daily_essay/presentation/home/components/empty_screen.dart';
@@ -53,7 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onTapItem(HomeViewModel homeViewModel, EditViewModel editViewModel, {Essay? item}) async {
     final bool? isSave = await Navigator.push(context, MaterialPageRoute(builder: (context) => EditScreen(item: item)));
-    editViewModel.clearPath();
+    editViewModel.onEvent(const EditEvent.clearState());
+
     if (isSave != null && isSave) {
       homeViewModel.onEvent(const HomeEvent.refreshEssay());
     }
