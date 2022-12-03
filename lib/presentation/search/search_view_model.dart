@@ -1,13 +1,47 @@
+import 'dart:async';
+
+import 'package:daily_essay/data/datasource/result.dart';
+import 'package:daily_essay/domain/model/download_picture.dart';
 import 'package:daily_essay/domain/use_case/search_use_cases.dart';
+import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_state.dart';
+import 'package:daily_essay/presentation/search/search_ui_event.dart';
 import 'package:flutter/material.dart';
 
 class SearchViewModel with ChangeNotifier {
-  SearchUseCases useCases;
+  final SearchUseCases _useCases;
 
-  final SearchState _state = SearchState(false, []);
+  final _eventCtrl = StreamController<SearchUiEvent>();
+
+  get eventCtrl => _eventCtrl.stream;
+
+  SearchState _state = SearchState(false, []);
 
   SearchState get state => _state;
 
-  SearchViewModel(this.useCases);
+  SearchViewModel(this._useCases);
+
+  void onEvent(SearchEvent event) {
+    event.when(
+      searchPicture: fetch,
+    );
+  }
+
+  void fetch(String query) async {
+    _state = state.copyWith(isLoading: true);
+    notifyListeners();
+
+    final result = await _useCases.searchPicture(query);
+    result.when(
+      success: (pictures) {
+        _state = state.copyWith(pictures: pictures);
+      },
+      error: (message) {
+        _eventCtrl.add(SearchUiEvent.showErrorMessage(message));
+      },
+    );
+
+    _state = state.copyWith(isLoading: false);
+    notifyListeners();
+  }
 }

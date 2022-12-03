@@ -10,7 +10,7 @@ class PictureItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(picture.largeImageURL),

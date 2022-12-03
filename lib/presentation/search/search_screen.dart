@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:daily_essay/presentation/search/components/picture_item.dart';
+import 'package:daily_essay/presentation/search/search_event.dart';
 import 'package:daily_essay/presentation/search/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,13 +14,17 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  StreamSubscription? _subscription;
+
   @override
   void initState() {
     super.initState();
+    _setUiEvent();
   }
 
   @override
   void dispose() {
+    _subscription?.cancel();
     super.dispose();
   }
 
@@ -49,7 +56,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
               onSubmitted: (String query) {
-                // todo.
+                viewModel.onEvent(SearchEvent.searchPicture(query));
               },
             ),
           ),
@@ -63,6 +70,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     padding: const EdgeInsets.all(8.0),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
                     ),
                     itemBuilder: (BuildContext context, int index) {
                       return PictureItem(picture: state.pictures[index]);
@@ -72,5 +81,19 @@ class _SearchScreenState extends State<SearchScreen> {
         ],
       ),
     );
+  }
+
+  void _setUiEvent() {
+    Future.microtask(() {
+      final viewModel = context.read<SearchViewModel>();
+      _subscription = viewModel.eventCtrl.listen((event) {
+        event.when(
+          showMessage: (message) {
+            final snackBar = SnackBar(content: Text(message));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+        );
+      });
+    });
   }
 }

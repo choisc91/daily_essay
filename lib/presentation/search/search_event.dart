@@ -1,1 +1,9 @@
-// todo build event class
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'search_event.freezed.dart';
+
+@Freezed()
+abstract class SearchEvent with _$SearchEvent {
+  const factory SearchEvent.searchPicture(String query) = SearchPicture;
+
+}
